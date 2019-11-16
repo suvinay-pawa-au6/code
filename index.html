@@ -10,23 +10,70 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <script>
-$(document).ready(function() {
-    $("#submitb").click(function(){
-      var name= $("#Name").val();
-      var email= $("#Email").val();
-      var number=$("#Number").val();
-      var nsize = name.length;
-      var esize=email.length;
-      var edot= email.search("[.]");
-      var nulength = number.length;
-      var student = [];
-      var c= 0;
-      if(nsize>=3 && esize>=5 && edot!=-1 && nulength == 10 )
+  var n = 0;
+  var student = [];
+
+  function addStudent (){
+    var name= $("#Name").val();
+    var email= $("#Email").val();
+    var number=$("#Number").val();
+    var nsize = name.length;
+    var esize=email.length;
+    var edot= email.search("[.]");
+    var nulength = number.length;
+    if(nsize>=3)
+    {
+      if(esize>=5)
       {
-        student.push(name,email,number);
-        var markup = "<tr><td>"+ name + "</td><td>"+ email +"</td><td>"+ number +"</td></tr>";  
-         $("table tbody").append(markup);
+        if(edot!=-1)
+        {
+          if(nulength == 10)
+          {
+             student[n]=('Name :' + name+ 'Email:' +email+'Number:'+ number);
+             var markup = "<tr><td>"+ name + "</td><td>"+ email +"</td><td>"+ number +"</td></tr>";
+             $("table tbody").append(markup);
+             n++;
+             alert('Student details are added to array and table');
+             countStudents();
+          }
+          else{
+            alert("Number length must be 10");
+          }
+        }
+        else{
+          alert("email must have a . ");
+        }
       }
+      else{
+        alert("Email length must be greater than 5");
+      }
+    }
+    else {
+      alert("Name length must be greater than 4" );
+    }
+
+  }
+  function countStudents(){
+    var count=n;
+  }
+
+  function deleteFirstStudent(){
+
+    student.splice(0,1);
+    alert('Student deleted from array' + '\n' + 'new array :' + student);
+    n--;
+  }
+  
+$(document).ready(function() {
+
+    $("#submitb").click(function(){
+
+      addStudent ();
+
+    });
+    $("#deleteb").click(function(){
+deleteFirstStudent();
+
     });
 });
  </script>
