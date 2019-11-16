@@ -4,7 +4,6 @@
   <style>
   table, td {
     border: 1px solid grey;
-
   }
   </style>
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -13,7 +12,6 @@
 <script>
 $(document).ready(function() {
     $("#submitb").click(function(){
-
       var name= $("#Name").val();
       var email= $("#Email").val();
       var number=$("#Number").val();
@@ -26,21 +24,11 @@ $(document).ready(function() {
       if(nsize>=3 && esize>=5 && edot!=-1 && nulength == 10 )
       {
         student.push(name,email,number);
-        alert("Array contents are" + student);
-        var table = document.getElementById("myTable");
-        var row = table.insertRow(0);
-        var cell1 = row.insertCell(0);
-        var cell2 = row.insertCell(1);
-        var cell3= row.insertCell(2);
-
-        cell1.innerHTML = name;
-        cell2.innerHTML = email;
-        cell3.innerHTML = nummber;
+        var markup = "<tr><td>"+ name + "</td><td>"+ email +"</td><td>"+ number +"</td></tr>";  
+         $("table tbody").append(markup);
       }
-
     });
 });
-
  </script>
 
  <h3>Name</h3>
@@ -62,17 +50,26 @@ $(document).ready(function() {
     <input type="number" class="form-control" id="Number" placeholder="Enter email">
   </div>
 
-  <button type="submit" id="submitb" class="btn btn-primary">Submit</button>
-</form>
 
+</form>
+<button type="submit" id="submitb" class="btn btn-primary">Submit</button>
 <button type="Delete Student" id="deleteb" class="btn btn-primary">Delete First Student</button>
 
 <table id="myTable">
+  <thead>
   <tr>
     <th bgcolor="#FF0000" style="color: #FFFFFF;">Name</th>
     <th bgcolor="#FF0000" style="color: #FFFFFF;">Email</th>
     <th bgcolor="#FF0000" style="color: #FFFFFF;">Number</th>
   </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
 </table>
 </body>
 
