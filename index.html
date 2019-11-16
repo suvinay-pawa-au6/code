@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+  table, td {
+    border: 1px solid grey;
+
+  }
+  </style>
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<script>
+$(document).ready(function() {
+    $("#submitb").click(function(){
+
+      var name= $("#Name").val();
+      var email= $("#Email").val();
+      var number=$("#Number").val();
+      var nsize = name.length;
+      var esize=email.length;
+      var edot= email.search("[.]");
+      var nulength = number.length;
+      var student = [];
+      var c= 0;
+      if(nsize>=3 && esize>=5 && edot!=-1 && nulength == 10 )
+      {
+        student.push(name,email,number);
+        alert("Array contents are" + student);
+        var table = document.getElementById("myTable");
+        var row = table.insertRow(0);
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        var cell3= row.insertCell(2);
+
+        cell1.innerHTML = name;
+        cell2.innerHTML = email;
+        cell3.innerHTML = nummber;
+      }
+
+    });
+});
+
+ </script>
+
+ <h3>Name</h3>
+</head>
+<body>
+
+<form>
+  <div class="form-group">
+    <label for="Name">Name</label>
+    <input type="text" id="Name" placeholder="Enter name">
+
+  </div>
+  <div class="form-group">
+    <label for="Email">email</label>
+    <input type="email" class="form-control" id="Email" placeholder="Enter email">
+  </div>
+  <div class="form-group">
+    <label for="Number">Number</label>
+    <input type="number" class="form-control" id="Number" placeholder="Enter email">
+  </div>
+
+  <button type="submit" id="submitb" class="btn btn-primary">Submit</button>
+</form>
+
+<button type="Delete Student" id="deleteb" class="btn btn-primary">Delete First Student</button>
+
+<table id="myTable">
+  <tr>
+    <th bgcolor="#FF0000" style="color: #FFFFFF;">Name</th>
+    <th bgcolor="#FF0000" style="color: #FFFFFF;">Email</th>
+    <th bgcolor="#FF0000" style="color: #FFFFFF;">Number</th>
+  </tr>
+</table>
+</body>
+
+</html>
